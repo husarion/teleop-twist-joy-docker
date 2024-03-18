@@ -1,3 +1,5 @@
+ARG ROS_DISTRO=humble
+
 FROM husarnet/ros:$ROS_DISTRO-ros-core
 
 RUN apt update && apt install -y \
