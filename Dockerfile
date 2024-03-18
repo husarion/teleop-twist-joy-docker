@@ -5,4 +5,4 @@ RUN apt update && apt install -y \
     rm -rf /var/lib/apt/lists/*
 
 COPY joy_params.yaml /
-COPY teleop_twist_joy.launch /
+COPY teleop_twist_joy_f710_params.yaml /
