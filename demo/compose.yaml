@@ -1,12 +1,16 @@
 services:
   joy:
-    build: .
+    build:
+      context: ..
+      dockerfile: Dockerfile
     devices:
       - /dev/input
     command: ros2 run joy joy_node --ros-args --params-file /joy_params.yaml
 
   teleop_twist_joy:
-    build: .
+    build:
+      context: ..
+      dockerfile: Dockerfile
     command: ros2 run teleop_twist_joy teleop_node --ros-args --params-file /teleop_twist_joy_f710_params.yaml
 
   rosbot_xl:
