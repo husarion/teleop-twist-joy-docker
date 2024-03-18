@@ -1,0 +1,20 @@
+services:
+  joy:
+    build: .
+    devices:
+      - /dev/input
+    command: ros2 run joy joy_node --ros-args --params-file /joy_params.yaml
+
+  teleop_twist_joy:
+    build: .
+    command: ros2 run teleop_twist_joy teleop_node --ros-args --params-file /teleop_twist_joy_f710_params.yaml
+
+  rosbot_xl:
+    image: husarion/rosbot-xl:humble-0.10.0-20240216
+    ports:
+      - 192.168.77.2:8888:8888/udp
+    command: >
+      ros2 launch /husarion_utils/rosbot.launch.py
+        mecanum:=${MECANUM:-True}
+        include_camera_mount:=True
+        healthcheck:=False
